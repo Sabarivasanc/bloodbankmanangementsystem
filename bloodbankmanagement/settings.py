@@ -123,11 +123,12 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
-STATIC_URL = '/static/'
-STATICFILES_DIRS=[
-STATIC_DIR,
- ]
-LOGIN_REDIRECT_URL='/afterlogin'
+STATIC_URL = os.environ.get("STATIC_URL", "/static/")
+STATICFILES_DIRS = [STATIC_DIR]
+
+# Login redirect URL
+
+LOGIN_REDIRECT_URL = os.environ.get("LOGIN_REDIRECT_URL", "/afterlogin")
 
 #for contact us give your gmail id and password
 EMAIL_BACKEND ='django.core.mail.backends.smtp.EmailBackend'
